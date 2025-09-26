@@ -1,0 +1,121 @@
+/*--- Base (Mobile First) ---*/
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery img {
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 90%;  /* flex-basis practice */
+}
+
+/* STUDENT CODE STARTS HERE */
+/* --- Tablet View (≥768px) --- */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 45% 45%;
+    justify-items: center;
+  }
+
+  .grid > div:nth-child(3n) {
+    grid-column: 1 / -1;   
+    justify-self: center;      
+    width: 50%;              
+  }
+
+  .gallery {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .gallery img {
+    flex: 1 1 30%;
+  }
+
+  .grid > div:nth-child(even) {
+    background-color: rgb(198, 225, 211);
+  }
+}
+
+/* --- Destop View (≥1200px) --- */
+@media (min-width: 1200px) {
+  .grid div:nth-child(3n) {
+    grid-column: auto;
+    width: inherit;
+  }
+
+  .grid{
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+  }
+
+  .gallery{
+    justify-content: space-between;
+  }
+
+  .gallery img{
+    flex: 1 1 200px;
+  }
+
+  .grid > div:hover{
+    box-shadow: 0 4px 12px grey;
+    transform: scale(1.05);
+  }
+}
+
+/* --- Print View --- */
+@media print {
+  
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  .gallery {
+    display: none;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .grid > div {
+    border: 1px solid rgb(0, 0, 0);
+    page-break-inside: avoid;
+  }
+
+}
+
+/* --- Reduced Motions --- */
+@media (prefers-reduced-motion: reduce) {
+
+  .grid > div:hover {
+    box-shadow: none;
+    transform: none;
+    transition: none;
+  }
+
+}
+
+/* --- Dark Mode --- */
+@media (prefers-color-scheme: dark) {
+  
+  body {
+    background-color: #111;
+    color: #eee
+  }
+
+  .grid > div {
+    background-color: #111;
+    border: 1px #EB5B00 solid;
+  }
+
+}
