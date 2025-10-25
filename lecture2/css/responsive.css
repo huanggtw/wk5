@@ -97,6 +97,7 @@
 /* --- Reduced Motions --- */
 @media (prefers-reduced-motion: reduce) {
 
+  .gallery img:hover,
   .grid > div:hover {
     box-shadow: none;
     transform: none;
